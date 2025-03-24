@@ -181,6 +181,48 @@ describe("Bluebird.try vs native Promise replacement", function () {
       }
     });
 
+    it("should provide correct error message for non-function arguments", async () => {
+      try {
+        await tryPromise("not a function");
+        assert.fail("Should have thrown an error");
+      } catch (err) {
+        assert.strictEqual(
+          err.message,
+          "Expected a function but got [object String]"
+        );
+      }
+
+      try {
+        await tryPromise(null);
+        assert.fail("Should have thrown an error");
+      } catch (err) {
+        assert.strictEqual(
+          err.message,
+          "Expected a function but got [object Null]"
+        );
+      }
+
+      try {
+        await tryPromise({});
+        assert.fail("Should have thrown an error");
+      } catch (err) {
+        assert.strictEqual(
+          err.message,
+          "Expected a function but got [object Object]"
+        );
+      }
+
+      try {
+        await tryPromise(123);
+        assert.fail("Should have thrown an error");
+      } catch (err) {
+        assert.strictEqual(
+          err.message,
+          "Expected a function but got [object Number]"
+        );
+      }
+    });
+
     it("should handle undefined return with Bluebird.try", async () => {
       const result = await Bluebird.try(() => {
         // No return statement
