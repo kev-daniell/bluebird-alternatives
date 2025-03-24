@@ -68,16 +68,6 @@ tryPromise(() => {
 });
 ```
 
-## Benefits
-
-- **Reduced Dependencies**: Remove Bluebird as a dependency to reduce package size
-
-- **Modern JavaScript**: Use native Promise features available in modern JavaScript
-
-- **Simplified Codebase**: Transition away from third-party Promise libraries
-
-- **Improved Performance**: Native Promises are well-optimized in modern JavaScript engines
-
 ## Testing
 
 The repository includes comprehensive tests comparing the behavior of Bluebird methods with their native Promise alternatives to ensure compatibility.
